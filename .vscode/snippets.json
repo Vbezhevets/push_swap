@@ -1,0 +1,9 @@
+{
+    "s": {
+        "prefix": "iam",
+        "body": [
+            "struct->node"
+        ],
+        "description": "s"
+    }
+} 

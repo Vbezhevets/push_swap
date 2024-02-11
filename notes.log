@@ -1,0 +1,15 @@
+в начале проверку на количество перед выделением памяти
+
+ft_printf("run for a: %d, b: %d\n", s->num, pair->num);	
+	// ft_printf("%d - a m\n && %d b paired m)  ________ \n",
+	
+	// m(a, indx(a), m(a->pair, indx(a->pair)));
+
+			ft_printf("a: %d | b: %d  we move up\n", s->num, pair->num);
+		ft_printf("a index: %d | b index: %d  we move down\n", s->index, pair->index);
+
+		ft_printf("for a %d and b %d | a_steps (%d) + b_steps (%d) - d (%d) = steps(%d)\n", 
+				a->num, a->pair->num, a_steps, b_steps, d, steps);
+
+
+		секс это безопасно
