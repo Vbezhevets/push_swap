@@ -57,19 +57,19 @@ int f(t_node *s, t_data *_); /*irst*/
 int m(t_node *s, int size, t_data *_); /*iddle (bellow midle)*/
 
 void go(t_data *_);
-void sort_2(t_data *_);
-void sort_3(t_data *_);
 
 int indx(t_node *s);
 void re_ind(t_data *_);
 int is_sorted(t_node *s);
 int find_maxi(t_node *s, int size);
+t_node *find_max(t_node *s, int size);
 void pair_max(t_node *s, t_node *big, int size);
 t_node *cost_calc(t_data *_, t_node *a, t_node *b, int i);
 int steps_calc(t_data *_, t_node *a, t_node *pair);
 //t_node *copy_list(t_node *src, int size, t_data *_, int i);
 void step(t_node *a, t_node *s);
 void operations(t_data *_, t_node *a);
+void back_to_a(t_data *_);
 
 void free_list(t_node *s);
 int error(char * m, t_data *_);

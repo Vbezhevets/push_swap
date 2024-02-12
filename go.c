@@ -9,46 +9,39 @@ void sort_2(t_data *_)
 
 void sort_3(t_data *_)
 {
-	int max;
-	max = find_maxi(_->a, 3);
-	if (max == 1)
-	{
+	int maxi;
+
+	maxi = find_maxi(_->a, 3);
+	ft_printf("%d MI\n\n\n", maxi);
+	if (maxi == 1)
 		ra(_);
-		sort_2(_);
-	}
-	if (max == 2)
-	{
-		ra(_);
-		ra(_);
-		sort_2(_);
-	}
+	if (maxi == 2)
+		rra(_);
+	sort_2(_);
 }
 
 void turk(t_data *_)
 {
-	int i;
 	t_node *best;
 
-	i = 0;
-	if (_->a_qty > 3)
-	{
+	while (_->a_qty > 3 && _->b_qty <2)
 		pb(_);
-		pb(_);	
-		pb(_);		
-	}
-	// pr(_->a);
 	re_ind(_);
 	while (_->a_qty > 3)
 	{
 		best = cost_calc(_, _->a, _->b, 0);
 		operations(_, best);
 		re_ind(_);
-		prt(_);
 	}
-	ft_printf("b: %p b: next %p b prev: %d\n", _->b, _->b->next, _->b->prev);
-	ft_printf("__\n");
-	pr_single(_->a);
-	//while (!is_sorted())
+	re_ind(_);
+	
+	sort_3(_);
+	prt(_);
+
+	back_to_a(_);
+	prt(_);
+
+	//while (!is_sorted())2
 }
 
 void go(t_data *_)

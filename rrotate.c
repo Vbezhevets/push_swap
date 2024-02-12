@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-
-
 t_node * rrotate(t_node *s)
 {
 	if (!s)

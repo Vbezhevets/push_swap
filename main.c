@@ -75,6 +75,4 @@ int main(int argc, char **argv)
 	else
 		ft_printf("No parameters\n");
 	
-}
-	
-	
+}	
