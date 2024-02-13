@@ -5,7 +5,8 @@
 
 t_node *push(t_node *new, t_node *old)
 {
-		// [p]->[]->[s]
+	// new->pair = NULL;
+	// new->p_found = 0;
 	if (old)
 	{
 		new->next = old;
@@ -49,16 +50,14 @@ void pb (t_data *_)
 		}
 
 	}
-	else {
-
-		ft_printf("ELSE \n");
+	else
 		_->a_top = NULL;
-	}
+	_->a->s = 2;	
 	_->b = push(_->a, _->b);
 	_->a = _->a_top;
 	_->a_qty--;
 	_->b_qty++;
-	p("pb", _);
+	ft_printf("pb\n");
 }
 
 void pa (t_data *_)
@@ -82,11 +81,12 @@ void pa (t_data *_)
 	}
 	else 
 		_->b_top = NULL;
+	_->b->s = 1;
 	_->a = push(_->b, _->a);
 	_->b = _->b_top;
 	_->b_qty--;
 	_->a_qty++;
-	p("pa", _);
+	ft_printf("pa\n");
 }
 
 /*

@@ -45,14 +45,19 @@ int indx(t_node *s	)
 	t_node *point;
 
 	i = 0;
-	if (!s->prev || !s)
-		return(1);
+	if (s == NULL)
+		return(0);
+	if (s->next == NULL || s->prev == NULL )
+		{
+			s->index = 1;
+			return (1);
+		}
 	point = s->prev;
 	while(s != point)
 	{
 		i++;
 		s->index = i;
-		s->dist = 0;
+		// s->dist = 0;
 		s = s->next;
 	}
 	s->index = ++i;
@@ -61,6 +66,8 @@ int indx(t_node *s	)
 
 t_node *find_max(t_node *s, int size)
 {
+	// if (!s) 
+	// 	return NULL;
 	int i;
 	i = 0;
 	while (++i != find_maxi(s, size))

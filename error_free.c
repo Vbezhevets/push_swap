@@ -17,28 +17,18 @@ void free_list(t_node *s)
 		}
 	}
 }
-
 void free_null(t_data *_)
 {
-	t_node	*s;
-
-	s = NULL;
-	if (_->a)
-		s = _->a;
-	else if(_->b)
-		s = _->b;
-	else if (_)
-		free(_);
-	else
-		return;
-	free_list(s);
-	free_null(_);
+			if (_->a != NULL)
+			free_list(_->a);
+		if(_->b != NULL)
+			free_list(_->b);
+		if (_)
+			free(_);
 }
-
-
-int error(char * m, t_data *_)
+int error(t_data *_)
 {
-	ft_printf("%s", m);
-	if (_) free_null(_);
+	ft_printf("Error\n");
+	free_null(_);
 	exit(1);
 }

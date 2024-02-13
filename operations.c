@@ -1,6 +1,6 @@
 #include "libft/libft.h"
 #include "push_swap.h"
- void operations(t_data *_, t_node *a)
+void a_to_b(t_data *_, t_node *a)
 {	
 	while (m(a, _->a_qty, _) && m(a->pair, _->b_qty, _) && !f(a, _) && !f(a->pair, _))
 		rrr(_);
@@ -22,48 +22,74 @@
 		pb(_);
 	a->p_found = 0;
 	a->pair->p_found = 0;
+	a->pair->steps = 0;
 	a->pair->pair = NULL;
 	a->pair = NULL;
+	a->steps = 0;
 }
-void roll_b_min_top(t_data *_)
+
+void b_to_a(t_data *_, t_node *b)
+{	
+	while (m(b, _->b_qty, _) && m(b->pair, _->a_qty, _) && !f(b, _) && !f(b->pair, _))
+		rrr(_);
+	while (!m(b, _->b_qty, _) && !m(b->pair, _->a_qty, _ ) && !f(b, _) && !f(b->pair, _))
+		rr(_);
+	if (!m(b, _->b_qty, _))
+		while (!f(b, _))
+			rrb(_);
+	else
+		while (!f(b, _))
+			rb(_);
+	if (!m(b->pair, _->a_qty, _))
+		while (!f(b->pair, _))
+			rra(_);
+	else
+		while (!f(b->pair, _))
+			ra(_);
+	if (f(b, _) && f(b->pair, _))
+		pa(_);
+	b->p_found = 0;
+	b->pair->p_found = 0;
+	b->pair->steps = 0;
+	b->pair->pair = NULL;
+	b->pair = NULL;
+	b->steps = 0;
+}
+
+
+
+void top(t_node *s, int size, t_data *_)
 {
 	t_node *max;
 	
-	re_ind(_);
-	max = find_max(_->b, _->b_qty);
-	if (max->prev)
-		max = max->prev;
+	indx(s);
+	max = find_max(s, size);
+	if (max->next)
+		max = max->next;
 	while(!f(max, _))
 	{
-		if (m(max, _->b_qty, _))
-			rrb(_);
-		else
-			rb(_);
-	}
-}
-void back_to_a(t_data *_)
-{
-	t_node *top;
-
-	while (_->b_qty > 1)
-	{
-		roll_b_min_top(_);
-		while (_->a->num < _->b->num)
-			ra(_);
-		if (_->b->num <= _->a->num)
-			pa(_);
-	}
-	top = find_max(_->a, _->a_qty);
-		top = top->next;
-	while(!f(top, _))
-	{
-		if (m(top, _->a_qty, _))
+		if (m(max, size, _))
 			rra(_);
 		else
-			ra(_);
+		ra(_);
 	}
-	if (_->b->num >= _->a->prev->num)
-		pa(_);
-	ra(_);
+}
+
+void back_to_a(t_data *_)
+{
+	t_node *best;
+
+	while (_->b_qty > 0)
+	{
+		best = cost_calc(_->b, _->a, _->b_qty, _->a_qty);
+		b_to_a(_, best);
+		re_ind(_);
+	}
+	// pair(_->b, _->a, _->a_qty);
+	top(_->a,_->a_qty, _);
+	// re_ind(_);
+	// pr_single(_->b);
+	// b_to_a(_, _->b);
+	// indx(_->a);
 }
 

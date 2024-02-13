@@ -21,6 +21,25 @@ void pair_max(t_node *s, t_node *big, int size)
 	}
 }
 
+void pair_min(t_node *s, t_node *big, int size)
+{
+	int min;
+	int i;
+
+	i = 1;
+	min = MAX;
+	while(i <= size)
+	{
+		if (big->num < min)
+		{
+			min = big->num;
+			s->pair = big;
+		}
+		big = big->next;
+		i++;
+	}
+}
+
 void pair_min_diff(t_node *s, t_node *big, int size)
 {
 	int i;
@@ -49,9 +68,15 @@ void pair(t_node *s, t_node *big, int size)
 	s->p_found = 0;
 	while (++i <= size)
 	{
-		if (s->num >= big->num)
+		if (s->num > big->num && s->s == 1)
 		{
 			big->dist = s->num - big->num;
+			big->p_found = 1;
+			s->p_found = 1;
+		}
+		else if (s->num < big->num && s->s == 2)
+		{
+			big->dist = big->num - s->num;
 			big->p_found = 1;
 			s->p_found = 1;
 		}
@@ -59,8 +84,10 @@ void pair(t_node *s, t_node *big, int size)
 			big->p_found = -1;
 		big = big->next;
 	}
-	if (s->p_found != 1)
+	if (s->p_found != 1 && s->s == 1)
 		pair_max(s, big_start, size);
+	else if (s->p_found != 1 && s->s == 2)
+		pair_min(s, big_start, size);	
 	else
 		pair_min_diff(s, big_start, size);
 }
@@ -74,42 +101,47 @@ int steps_s(t_node *s, int size, t_data *_)
 	 	steps = s->index - 1;
 	return steps;
 }
-int steps_calc(t_data *_, t_node *a, t_node *pair)
+
+
+int steps_calc(t_data *_, t_node *s, int s_size, int big_size)
 {
-	int a_steps;
-	int b_steps;
+	int s_steps;
+	int big_steps;
 	int steps;
 	int d;
 	
 	d = 0;
-	a_steps = steps_s(a, _->a_qty, _);
-	b_steps = steps_s(pair, _->b_qty, _);
-	if ((m(a, _->a_qty, _) && m(pair, _->b_qty, _)) || !m(a, _->a_qty, _) && !m(pair, _->b_qty, _))
-		d = (a_steps + b_steps) / 2;
+	s_steps = steps_s(s, s_size, _);
+	big_steps = steps_s(s->pair, big_size, _);
+	if ((m(s, s_size, _) && m(s->pair, big_size, _)) || (!m(s, s_size, _) && !m(s->pair, big_size, _)))
+		d = (s_steps + big_steps) / 2;
 	if (d < 0)
 		d = -d;
-	steps = a_steps + b_steps - d;
+	steps = s_steps + big_steps - d;
 	return (steps);
 }
 
-t_node *cost_calc(t_data *_, t_node *a, t_node *b, int i)
+t_node *cost_calc(t_node *s, t_node *big, int s_size, int big_size)
 {
 	t_node *best;
 	int min;
+	int i;
 	
+	i = 0;
 	min = MAX;
-	while (++i <= _->a_qty)
+	while (++i <= s_size)
 	{
-		pair(a, _->b, _->b_qty);
-		a->steps = steps_calc(_, a, a->pair);
-		if (a->steps < min)
+		pair(s, big, big_size);
+		s->steps = steps_calc(s->_, s, s_size, big_size);
+		if (s->steps < min)
 		{
-			min = a->steps;
-			best = a;
+			min = s->steps;
+			best = s;
 		}
-		if (a->steps == 0)
+		if (s->steps == 0)
 			break;
-		a = a->next;
+		if (s->next)
+			s = s->next;
 	}
 	return best;
 }

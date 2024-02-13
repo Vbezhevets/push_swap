@@ -1,3 +1,4 @@
+#include "libft/libft.h"
 #include "push_swap.h"
 
 t_node * rrotate(t_node *s)
@@ -12,16 +13,16 @@ t_node * rrotate(t_node *s)
 void rra(t_data *_)
 {
 	_->a = rrotate(_->a);
-	p("rra", _);
+	ft_printf("rra\n");
 }
 void rrb(t_data *_)
 {
 	_->b = rrotate(_->b);
-	p("rrb", _);
+	ft_printf("rrb\n");
 }
 void rrr(t_data *_)
 {
 	_->a = rrotate(_->a);
 	_->b = rrotate(_->b);
-	p("rrr", _);
+	ft_printf("rrr\n");
 }
