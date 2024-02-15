@@ -5,8 +5,10 @@
 
 t_node *push(t_node *new, t_node *old)
 {
-	// new->pair = NULL;
-	// new->p_found = 0;
+	new->pair = NULL;
+	new->p_found = 0;
+	new->steps = MAX;
+	new->dist = MAX;
 	if (old)
 	{
 		new->next = old;

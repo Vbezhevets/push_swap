@@ -34,6 +34,7 @@ typedef struct s_data
     int     a_qty;
     int     b_qty;
     struct s_data *cp;
+    int allsteps;
 } t_data;
 
 t_node *s(t_node *st);
@@ -55,13 +56,14 @@ int m(t_node *s, int size, t_data *_); /*iddle (bellow midle)*/
 
 void *go(t_data *_);
 
-int indx(t_node *s);
+int indx(t_node *s, t_data *_);
 void re_ind(t_data *_);
-int is_sorted(t_node *s);
+int is_sorted(t_node *s, t_data *_);
 int find_maxi(t_node *s, int size);
 t_node *find_max(t_node *s, int size);
 void pair_max(t_node *s, t_node *big, int size);
 void pair(t_node *s, t_node *big, int size);
+int steps_s(t_node *s, int size, t_data *_);
 
 t_node *cost_calc(t_node *s, t_node *big, int s_size, int big_size);
 //t_node *copy_list(t_node *src, int size, t_data *_, int i);

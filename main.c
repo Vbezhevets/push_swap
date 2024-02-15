@@ -35,12 +35,17 @@ int	fill_a(char **nums, t_data *_, int i)
 			node->next = (t_node *)ft_calloc(1, sizeof(t_node));
 				if (!node->next)
 					error(_);
-			node = node->next;
 			node->_ = _;
+			node->steps = MAX;
+			node->s = 1;
+			node = node->next;
 		}
 		else
 		{
 		 	node->next = _->a;
+			node->_ = _;
+			node->s = 1;
+			node->steps = MAX;
 			_->a->prev = node; 
 		}
 	}
@@ -58,6 +63,7 @@ t_data *init_null(t_data *_)
 	_->a->prev = NULL;
 	_->b = NULL;
 	_->b_qty = 0;
+	_->allsteps = 0;
 	return _;
 }
 
@@ -68,7 +74,7 @@ void check_and_load(char **str, t_data *_)
 
 	if (_->a_qty > 1)
 	{	
-		indx(_->a);
+		indx(_->a, _);
 		go(_);
 	}
 	else

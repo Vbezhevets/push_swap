@@ -61,9 +61,6 @@ void rpr(t_node *s)
 
 void pr_by_ind(t_node *s, int i)
 {
-	t_node *point;
-
-	point = s;
 	if (s != NULL)
 	{	
 		while(s->index != i)

@@ -10,7 +10,7 @@ void sort_2(t_data *_)
 void sort_3(t_data *_)
 {
 	int maxi;
-
+	
 	maxi = find_maxi(_->a, 3);
 	if (maxi == 1)
 		ra(_);
@@ -26,7 +26,6 @@ void turk(t_data *_)
 
 	while (_->a_qty > 3 && _->b_qty <2)
 		pb(_);
-
 	while (_->a_qty > 3)
 	{
 		best = cost_calc(_->a, _->b, _->a_qty,  _->b_qty);
@@ -36,16 +35,11 @@ void turk(t_data *_)
 	re_ind(_);
 	sort_3(_);
 	back_to_a(_);
-	prt(_);
 }
 
 void *go(t_data *_)
-{
-	t_node *rev;
-
-
-
-	if (is_sorted(_->a))
+{	
+	if (is_sorted(_->a, _))
 		exit(0);
 	if (_->a_qty == 2)
 		sort_2(_);
@@ -53,7 +47,5 @@ void *go(t_data *_)
 		sort_3(_);
 	if (_->a_qty > 3)
 		turk(_);
-	// prt(_);
-	// free_null(_);
 	exit(0);
 }
