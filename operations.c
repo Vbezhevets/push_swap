@@ -44,8 +44,6 @@ void b_to_a(t_data *_, t_node *b)
 		pa(_);
 }
 
-
-
 void top(t_node *s, int size, t_data *_)
 {
 	t_node *max;
@@ -60,7 +58,6 @@ void top(t_node *s, int size, t_data *_)
 			rra(_);
 		else
 			ra(_);
-	_->allsteps++;
 	}
 }
 
@@ -74,11 +71,12 @@ void back_to_a(t_data *_)
 		rb(_);
 	if (maxi == 2)
 		rrb(_);
-	if (_->b->num > _->b->next->num)
-		sb(_);
+	if (_->b && _->b->next)
+		if (_->b->num > _->b->next->num)
+			sb(_);
 	while (_->b_qty > 0)
 	{
-		pair(_->b, _->a, _->a_qty);
+		pair(_->b, _->a, _->a_qty, 0);
 		best = cost_calc(_->b, _->a, _->b_qty, _->a_qty);
 		b_to_a(_, best);
 		re_ind(_);

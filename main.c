@@ -2,95 +2,113 @@
 #include "push_swap.h"
 #include <stdlib.h>
 
-int dupl(t_node *s, int n, int size, t_data *_)
+int dupl(t_node *s, int size)
 {
 	int i;
+	int n;
 	
+	n = s->num;
+
 	i = 0;
 	s->s = 1;
 	if (s->prev)
 		while (++i <= size)
 		{
 			if (n == s->prev->num)
-				return (error (_), 1);
+					return 1;
 			s = s->prev;
 		}
 	return 0;
 }
 
-int	fill_a(char **nums, t_data *_, int i)
-{
-	t_node	*node;
-	t_node	*prev;
 
-	prev = NULL;
-	node = _->a;
-	while (nums[++i])
-	{
-		node->num = ft_atoi(nums[i]);
-		node->prev = prev;
-		prev = node;
-		if (nums[i + 1] && !dupl(node, node->num, i, _))
+int	fill_a(t_data *_, int i, t_node *s, t_node *prev)
+{
+	while (_->str[++i])
+	{	
+		_->a_qty = i;
+		s->prev = prev;
+		prev = s;
+		nnule(s, _);
+		s->next = _->a;
+		s->num = (int)ft_atol(_->str[i], _);
+		if (dupl(s, i))
+			return -1;
+		if (_->str[i + 1])
 		{
-			node->next = (t_node *)ft_calloc(1, sizeof(t_node));
-				if (!node->next)
-					error(_);
-			node->_ = _;
-			node->steps = MAX;
-			node->s = 1;
-			node = node->next;
+			s->next = (t_node *)ft_calloc(1, sizeof(t_node));
+				if (!s->next)
+					return(-1);
+			s = s->next;
 		}
 		else
 		{
-		 	node->next = _->a;
-			node->_ = _;
-			node->s = 1;
-			node->steps = MAX;
-			_->a->prev = node; 
+			s->next = _->a;
+			_->a->prev = s; 
 		}
 	}
+	_->a_qty = i;
 	return(i);
+}
+
+void nnule(t_node *s, t_data *_)
+{
+			s->_ = _;
+			s->s = 1;
+			s->num = 0;
+			s->p_found = 0;
+			s->steps = MAX;
 }
 
 t_data *init_null(t_data *_)
 {
 	_ = (t_data *)ft_calloc(1, sizeof(t_data));
+	if (!_)
+	{
+		ft_printf("Error\n");
+		exit (1);
+	}
 	_->a = (t_node *)ft_calloc(1, sizeof(t_node));
-	if (!_ || !_->a)
-			error(_);
+	if (!_->a)
+	{
+		ft_printf("Error\n");
+		free(_);
+		exit (1);
+	}
 	_->a->next = NULL;
 	_->a->pair = NULL;
 	_->a->prev = NULL;
 	_->b = NULL;
 	_->b_qty = 0;
-	_->allsteps = 0;
+	_->str=NULL;
+	_->needsf = 0;
 	return _;
 }
 
-void check_and_load(char **str, t_data *_)
-{
-	if (1)
-		_->a_qty = fill_a(str, _, -1);
-
-	if (_->a_qty > 1)
-	{	
-		indx(_->a, _);
-		go(_);
-	}
-	else
-		exit(0);
-}
 int main(int argc, char **argv)
 {
 	t_data *_;
-	_ = NULL;
+	int l;
 
+	_ = NULL;
+	if (argc == 1)
+		exit (1);
 	_ = init_null(_);
 	if (argc == 2)
-		check_and_load(ft_split(argv[1], ' '), _);
+	{
+		_->needsf = 1;
+		_->str = ft_split(argv[1], ' ');
+
+	}
 	else if (argc > 2)
-		check_and_load((argv + 1), _);
+		_->str = (argv + 1);
+	l = fill_a(_, -1, _->a, NULL);
+	if (argc == 2)
+		free_str(_);
+	if (l < 1)
+		error(_);
+	if (l > 1)
+		go(_);
 	else
-		exit(1);
-	
-}	
+		ex(_);
+}

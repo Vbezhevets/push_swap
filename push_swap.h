@@ -24,17 +24,16 @@ typedef struct s_node
 
 typedef struct s_data
 {
+    char    **str;
     t_node  *a;
     t_node  *b;
     t_node  *a_top;
     t_node  *b_top;
     t_node  temp;
     t_node  *b_temp;
-    int     a_lasti;
     int     a_qty;
     int     b_qty;
-    struct s_data *cp;
-    int allsteps;
+    int needsf;
 } t_data;
 
 t_node *s(t_node *st);
@@ -54,15 +53,16 @@ void rrr(t_data *_);
 int f(t_node *s, t_data *_); /*irst*/
 int m(t_node *s, int size, t_data *_); /*iddle (bellow midle)*/
 
+void nnule(t_node *s, t_data *_);
+int	ft_atol( char *nptr, t_data *_);
 void *go(t_data *_);
-
 int indx(t_node *s, t_data *_);
 void re_ind(t_data *_);
 int is_sorted(t_node *s, t_data *_);
 int find_maxi(t_node *s, int size);
 t_node *find_max(t_node *s, int size);
 void pair_max(t_node *s, t_node *big, int size);
-void pair(t_node *s, t_node *big, int size);
+void pair(t_node *s, t_node *big, int size, int i);
 int steps_s(t_node *s, int size, t_data *_);
 
 t_node *cost_calc(t_node *s, t_node *big, int s_size, int big_size);
@@ -75,6 +75,8 @@ void back_to_a(t_data *_);
 void free_null(t_data *_);
 void free_list(t_node *s);
 int error(t_data *_);
+int ex(t_data *_);
+void free_str(t_data *_);
 
 void pr(t_node *s);
 void rpr(t_node *s);
@@ -86,5 +88,4 @@ t_node *rev_list(t_node *src, int size, t_data *_, int i);
 
 #define MIN -2147483648
 #define MAX 2147483647
-#define MAXDIF  4294967294
 #endif

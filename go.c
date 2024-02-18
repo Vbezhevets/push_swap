@@ -23,7 +23,6 @@ void turk(t_data *_)
 {
 
 	t_node *best;
-
 	while (_->a_qty > 3 && _->b_qty <2)
 		pb(_);
 	while (_->a_qty > 3)
@@ -39,13 +38,18 @@ void turk(t_data *_)
 
 void *go(t_data *_)
 {	
+	indx(_->a, _);
 	if (is_sorted(_->a, _))
+	{
+		free_null(_);
 		exit(0);
+	}
 	if (_->a_qty == 2)
 		sort_2(_);
 	if (_->a_qty == 3)
 		sort_3(_);
 	if (_->a_qty > 3)
 		turk(_);
+	free_null(_);
 	exit(0);
 }

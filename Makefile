@@ -7,7 +7,7 @@ LIBDIR	= ./libft
 LIBFT	= ${LIBDIR}/libft.a
 
 SRCS        :=      main.c error_free.c swaps.c push.c rotate.c rrotate.c tests.c \
-					cost_calc.c operations.c go.c utils.c small_utils.c
+					cost_calc.c operations.c go.c utils.c small_utils.c pair.c
 OBJS        := $(SRCS:.c=.o)
 
 %.o : %.c

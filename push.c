@@ -1,7 +1,6 @@
 
 #include "libft/libft.h"
 #include "push_swap.h"
-#include <alloca.h>
 
 t_node *push(t_node *new, t_node *old)
 {
@@ -50,7 +49,6 @@ void pb (t_data *_)
 			_->a_top->next = NULL;
 			_->a_top->prev = NULL;
 		}
-
 	}
 	else
 		_->a_top = NULL;

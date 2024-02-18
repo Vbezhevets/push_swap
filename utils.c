@@ -1,6 +1,36 @@
 
 #include "libft/libft.h"
 #include "push_swap.h"
+
+int	ft_atol( char *nptr, t_data *_)
+{
+	long	num;
+	int	sign;
+	int	n;
+
+	n = 0;
+	num = 0;
+	sign = 1;
+		
+	if (*nptr == 45)
+	{
+		sign = -1;
+		nptr++;
+	}
+	while (*nptr)
+	{
+		if ((*nptr > 47) && (*nptr < 58))
+			n = *nptr - 48;
+		else
+		 	return (error(_), 1);
+		num = num * 10 + n;
+		nptr++;
+	}
+	if (num * sign < MIN || num > MAX)
+		return (error(_), 1);
+	return (num * sign);
+}
+
 int find_maxi(t_node *s, int size)
 {
 	int max;
@@ -11,12 +41,15 @@ int find_maxi(t_node *s, int size)
 	max = MIN;
 	while(i <= size)
 	{
-		if (s->num > max)
+		if (s)
 		{
-			max = s->num;
-			maxi = s->index;
+			if (s->num > max)
+			{
+				max = s->num;
+				maxi = s->index;
+			}
+			s = s->next;
 		}
-		s = s->next;
 		i++;
 	}
 	return (maxi);
@@ -30,7 +63,6 @@ int is_sorted(t_node *s, t_data *_)
 	lasti = indx(s, _);
 	while (i < lasti)
 	{
-		
 		if (s->num > s->next->num)
 			return(0);
 		s = s->next;
@@ -66,11 +98,3 @@ int indx(t_node *s, t_data *_)
 	return i;
 }
 
-t_node *find_max(t_node *s, int size)
-{
-	int i;
-	i = 0;
-	while (++i != find_maxi(s, size))
-		s = s->next;
-	return(s);
-}

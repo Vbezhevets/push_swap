@@ -25,3 +25,15 @@ int f(t_node *s, t_data *_)
 		return (1);
 	return (0);
 }
+
+
+
+t_node *find_max(t_node *s, int size)
+{
+	int i;
+	i = 0;
+	while (++i != find_maxi(s, size))
+		s = s->next;
+	return(s);
+}
+
