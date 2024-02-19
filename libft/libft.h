@@ -6,7 +6,7 @@
 /*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:37:06 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/15 17:14:02 by v                ###   ########.fr       */
+/*   Updated: 2024/02/18 20:07:42 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#define BUFFER_SIZE 10
 
 int ft_isalpha(int c);
 int ft_isdigit(int c);
@@ -53,7 +53,7 @@ void ft_putchar_fd(char c, int fd);
 void ft_putstr_fd(char *s, int fd);
 void ft_putendl_fd(char *s, int fd);
 void ft_putnbr_fd(int n, int fd);
-
+char	*get_next_line(int fd);
 int ft_printf(char *str, ...);
 void ft_putnbr(long long int n, int *count);
 void ft_putchr(char c, int *count);

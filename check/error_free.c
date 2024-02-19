@@ -1,6 +1,4 @@
-#include "libft/libft.h"
-#include "push_swap.h"
-#include <assert.h>
+#include "checker.h"
 
 void free_list(t_node *s)
 {
@@ -26,12 +24,17 @@ void free_list(t_node *s)
 
 void free_null(t_data *_)
 {
-		if (_->a != NULL)
-			free_list(_->a);
-		if(_->b != NULL)
-			free_list(_->b);
-		if (_)
-			free(_);
+	if (_->needsf == 1)
+	{
+		free_str(_);
+		_->needsf = 0;
+	}
+	if (_->a != NULL)
+		free_list(_->a);
+	if(_->b != NULL)
+		free_list(_->b);
+	if (_)
+		free(_);
 }
 int error(t_data *_)
 {
@@ -41,6 +44,8 @@ int error(t_data *_)
 		free_str(_);
 		_->needsf = 0;
 	}
+	if (_->cmd)
+		free(_->cmd);
 	free_null(_);
 	exit(1);
 }

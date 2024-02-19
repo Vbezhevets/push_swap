@@ -1,6 +1,4 @@
-#include "libft/libft.h"
-#include "push_swap.h"
-#include <stdlib.h>
+#include "checker.h"
 
 int dupl(t_node *s, int size)
 {
@@ -29,8 +27,7 @@ int	fill_a(t_data *_, int i, t_node *s, t_node *prev)
 		_->a_qty = i;
 		s->prev = prev;
 		prev = s;
-		nnule(s, _);
-		s->next = _->a;
+			s->next = _->a;
 		s->num = (int)ft_atol(_->str[i], _);
 		if (dupl(s, i))
 			return -1;
@@ -50,15 +47,7 @@ int	fill_a(t_data *_, int i, t_node *s, t_node *prev)
 	_->a_qty = i;
 	return(i);
 }
-
-void nnule(t_node *s, t_data *_)
-{
-			s->_ = _;
-			s->s = 1;
-			s->num = 0;
-			s->p_found = 0;
-			s->steps = MAX;
-}
+ 
 
 t_data *init_null(t_data *_)
 {
@@ -82,7 +71,36 @@ t_data *init_null(t_data *_)
 	_->b_qty = 0;
 	_->str=NULL;
 	_->needsf = 0;
+	_->cmd = NULL;
 	return _;
+}
+
+
+void read_cmd(t_data *_)
+{
+	int br;
+
+    while (1)
+    {
+		_->cmd = (char *)malloc(4);
+			if (!_->cmd)
+				error(_);
+    	br = read(0, _->cmd, 4); 
+		if (br == 1 && !ft_strncmp(_->cmd, "\n", 1))
+		{
+			free(_->cmd);
+			_->cmd = NULL;
+			break;
+		}
+		_->cmd[br] = '\0';
+		exec(_->cmd, _);
+		free(_->cmd);
+		_->cmd = NULL;
+    }
+	if (is_sorted(_->a, _))
+		ok(_);
+	else
+	 	ko(_);
 }
 
 int main(int argc, char **argv)
@@ -109,7 +127,7 @@ int main(int argc, char **argv)
 	if (l < 1)
 		error(_);
 	if (l > 1)
-		go(_);
+		read_cmd(_);
 	else
 		ex(_);
 }

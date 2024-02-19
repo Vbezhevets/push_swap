@@ -6,7 +6,7 @@
 #    By: v <v@student.42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:50:27 by bvalerii          #+#    #+#              #
-#    Updated: 2024/02/15 17:13:09 by v                ###   ########.fr        #
+#    Updated: 2024/02/18 20:08:06 by v                ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS = \
 		ft_toupper.c ft_tolower.c ft_calloc.c ft_strdup.c ft_substr.c \
 		ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-		ft_printf.c ft_putchar.c ft_putx.c ft_strcpy.c 
+		ft_printf.c ft_putchar.c ft_putx.c ft_strcpy.c get_next_line.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
