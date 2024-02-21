@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/20 16:44:38 by bvalerii          #+#    #+#             */
+/*   Updated: 2024/02/20 16:46:59 by bvalerii         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
-t_node *push(t_node *new, t_node *old)
+t_node	*push(t_node *new, t_node *old)
 {
 	new->pair = NULL;
 	new->p_found = 0;
@@ -31,9 +41,9 @@ t_node *push(t_node *new, t_node *old)
 	return (new);
 }
 
-void pb (t_data *_)
+void	pb(t_data *_)
 {
-	t_node *s;
+	t_node	*s;
 
 	s = _->a;
 	if (s->next)
@@ -52,7 +62,7 @@ void pb (t_data *_)
 	}
 	else
 		_->a_top = NULL;
-	_->a->s = 2;	
+	_->a->s = 2;
 	_->b = push(_->a, _->b);
 	_->a = _->a_top;
 	_->a_qty--;
@@ -60,9 +70,9 @@ void pb (t_data *_)
 	ft_printf("pb\n");
 }
 
-void pa (t_data *_)
+void	pa(t_data *_)
 {
-	t_node *n;
+	t_node	*n;
 
 	n = _->b;
 	if (n->next)
@@ -79,7 +89,7 @@ void pa (t_data *_)
 			_->b_top->prev = NULL;
 		}
 	}
-	else 
+	else
 		_->b_top = NULL;
 	_->b->s = 1;
 	_->a = push(_->b, _->a);
@@ -88,5 +98,3 @@ void pa (t_data *_)
 	_->a_qty++;
 	ft_printf("pa\n");
 }
-
-

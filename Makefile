@@ -1,36 +1,74 @@
-NAME	= push_swap
+NAME  = push_swap
+NAME_B= check_bonus
 
-CC		= cc
-CFLAGS	= -g -Wall -Wextra -Werror
+CC    = cc
+CFLAGS= -Wall -Wextra -Werror
+RM    = rm -rf
 
-LIBDIR	= ./libft
-LIBFT	= ${LIBDIR}/libft.a
+LIBDIR= ./libft
+LIBFT = ${LIBDIR}/libft.a
 
-SRCS        :=      main.c error_free.c swaps.c push.c rotate.c rrotate.c tests.c \
-					cost_calc.c operations.c go.c utils.c small_utils.c pair.c
-OBJS        := $(SRCS:.c=.o)
+SRCSDIR     = srcs
+SRCS  = \
+			${SRCSDIR}/main.c \
+			${SRCSDIR}/error_free.c \
+			${SRCSDIR}/swaps.c \
+			${SRCSDIR}/push.c \
+			${SRCSDIR}/rotate.c \
+			${SRCSDIR}/rrotate.c \
+			${SRCSDIR}/cost_calc.c \
+			${SRCSDIR}/operations.c \
+			${SRCSDIR}/go.c \
+			${SRCSDIR}/utils.c \
+			${SRCSDIR}/small_utils.c \
+			${SRCSDIR}/pair.c
 
-%.o : %.c
-	${CC} ${CFLAGS} -o $@ -c $< -I${LIBDIR}
+OBJSDIR     = ${SRCSDIR}/objs
+OBJS        = $(SRCS:${SRCSDIR}/%.c=${OBJSDIR}/%.o)
 
-${NAME}	: ${LIBFT} ${OBJS}
-		${CC} ${LINKS} -o $@ ${OBJS} -L . ./libft/libft.a
+SRCSDIR_B   = srcs_bonus
+SRCS_B= \
+		${SRCSDIR_B}/main_b.c \
+		${SRCSDIR_B}/exec_b.c \
+		${SRCSDIR_B}/push_b.c \
+		${SRCSDIR_B}/utils_b.c \
+		${SRCSDIR_B}/error_free_b.c \
+		${SRCSDIR_B}/rotate_b.c \
+		${SRCSDIR_B}/rrotate_b.c \
+		${SRCSDIR_B}/swaps_b.c
 
-${LIBFT}:
-		make -C $(LIBDIR) all
+OBJSDIR_B   = ${SRCSDIR_B}/objs
+OBJS_B= $(SRCS_B:$(SRCSDIR_B)/%.c=${OBJSDIR_B}/%.o)
 
-all		: ${NAME}
+all   : $(NAME) $(NAME_B)
 
-bonus	: all
+bonus : $(NAME_B)
 
-clean	:
-		make -C ${LIBDIR} clean
-		rm -f ${OBJS} ${OBJS_B}
+$(NAME)     : $(OBJS)
+		make --no-print-directory -C ${LIBDIR} all
+		$(CC) $(CFLAGS) -o $@ $^ $(LINKS) -L. ${LIBFT}
 
-fclean	: clean
-		make -C ${LIBDIR} fclean
-		rm -f ${NAME}
+$(NAME_B)   : $(OBJS_B)
+		make --no-print-directory -C ${LIBDIR} all
 
-re		: fclean all
+		$(CC) $(CFLAGS) -o $(NAME_B) $^ $(LINKS) -L. ${LIBFT}
 
-.PHONY: all, clean, fclean, bonus, re
+${OBJSDIR}/%.o : ${SRCSDIR}/%.c
+		@mkdir -p $(dir $@)
+		${CC} ${CFLAGS} -c $< -o $@ -I ./includes
+
+${OBJSDIR_B}/%.o : ${SRCSDIR_B}/%.c
+		@mkdir -p $(dir $@)
+		${CC} ${CFLAGS} -c $< -o $@ -I ./includes
+
+clean :
+		make --no-print-directory -C ${LIBDIR} clean
+		$(RM) $(OBJSDIR) $(OBJSDIR_B)
+
+fclean:
+		make --no-print-directory -C ${LIBDIR} fclean
+		$(RM) $(OBJSDIR) $(OBJSDIR_B) $(NAME) $(NAME_B)
+
+re    : fclean all
+
+.PHONY: all clean fclean bonus re
