@@ -1,5 +1,5 @@
 NAME  = push_swap
-NAME_B= check_bonus
+NAME_B= checker
 
 CC    = cc
 CFLAGS= -Wall -Wextra -Werror -g
@@ -41,7 +41,7 @@ SRCS_B= \
 OBJSDIR_B   = ${SRCSDIR_B}/objs
 OBJS_B= $(SRCS_B:$(SRCSDIR_B)/%.c=${OBJSDIR_B}/%.o)
 
-all   : $(NAME) $(NAME_B)
+all   : $(NAME)
 
 bonus : $(NAME_B)
 

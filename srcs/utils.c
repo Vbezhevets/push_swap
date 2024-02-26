@@ -6,7 +6,7 @@
 /*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:49:07 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/26 13:01:13 by v                ###   ########.fr       */
+/*   Updated: 2024/02/26 17:06:01 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,25 @@ long	ato(char *nptr, t_data *_)
 	return (num);
 }
 
-int	ft_atol(char *nptr, t_data *_)
+int	ft_atol(char *nptr, t_data *_, int l)
 {
 	char	*str;
 	long	num;
-	int	l;
 	long	sign;
 
 	sign = 1;
 	l = ft_strlen(nptr);
-
 	if (l == 0 || (l == 1 && *nptr == '-'))
 		return (error(_), 1);
 	if (*nptr == 45)
 	{
 		sign = -1;
 		nptr++;
+	}
+	while (*nptr == '0')
+	{
+		nptr++;
+		l--;
 	}
 	num = ato(nptr, _);
 	str = ft_itoa(num * sign);
