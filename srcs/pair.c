@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pair.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:35:36 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/20 16:43:32 by bvalerii         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:42:55 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	pair_max(t_node *s, t_node *bg, int size)
 {
-	int	max;
+	long	max;
 	int	i;
 
 	i = 1;
@@ -33,7 +33,7 @@ void	pair_max(t_node *s, t_node *bg, int size)
 
 void	pair_min(t_node *s, t_node *bg, int size)
 {
-	int	min;
+	long	min;
 	int	i;
 
 	i = 1;
@@ -55,7 +55,7 @@ void	pair_min_diff(t_node *s, t_node *bg, int size)
 	int		i;
 	long	min_diff;
 
-	min_diff = MAX;
+	min_diff = MAXDIST;
 	i = 0;
 	while (++i <= size)
 	{
@@ -78,7 +78,7 @@ void	pair(t_node *s, t_node *bg, int size, int i)
 	bg_start = bg;
 	s->p_found = 0;
 	while (++i <= size)
-	{
+	{	
 		if ((s->num > bg->num && s->s == 1) || (s->num < bg->num && s->s == 2))
 		{
 			if (s->s == 1)

@@ -2,7 +2,7 @@ NAME  = push_swap
 NAME_B= check_bonus
 
 CC    = cc
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror -g
 RM    = rm -rf
 
 LIBDIR= ./libft
@@ -21,7 +21,8 @@ SRCS  = \
 			${SRCSDIR}/go.c \
 			${SRCSDIR}/utils.c \
 			${SRCSDIR}/small_utils.c \
-			${SRCSDIR}/pair.c
+			${SRCSDIR}/pair.c \
+			${SRCSDIR}/tests.c
 
 OBJSDIR     = ${SRCSDIR}/objs
 OBJS        = $(SRCS:${SRCSDIR}/%.c=${OBJSDIR}/%.o)

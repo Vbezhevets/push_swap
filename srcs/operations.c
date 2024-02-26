@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:30:22 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/20 16:35:20 by bvalerii         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:24:06 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,9 @@ void	top(t_node *s, int size, t_data *_)
 void	back_to_a(t_data *_)
 {
 	t_node	*best;
-	int		maxi;
 
-	maxi = find_maxi(_->b, 3);
-	if (maxi == 1)
-		rb(_);
-	if (maxi == 2)
-		rrb(_);
-	if (_->b && _->b->next)
-		if (_->b->num > _->b->next->num)
-			sb(_);
+	re_ind(_);
+	sort_3(_);
 	while (_->b_qty > 0)
 	{
 		pair(_->b, _->a, _->a_qty, 0);

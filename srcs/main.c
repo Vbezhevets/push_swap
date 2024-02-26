@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:17:51 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/20 16:30:03 by bvalerii         ###   ########.bgfr     */
+/*   Updated: 2024/02/26 12:34:28 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	fill_a(t_data *_, int i, t_node *s, t_node *prev)
 		prev = s;
 		nnule(s, _);
 		s->next = _->a;
-		s->num = (int)ft_atol(_->str[i], _);
+		s->num = ft_atol(_->str[i], _);
 		if (dupl(s, i))
 			return (-1);
 		if (_->str[i + 1])

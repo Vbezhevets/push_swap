@@ -39,7 +39,7 @@ static int qty(char const *s, char c)
 
 void free_all(char **new, int w)
 {
-	while (w > 0)
+	while (w >= 0)
 		free(new[w--]);
 }
 

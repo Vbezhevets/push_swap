@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:47:24 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/20 17:29:45 by bvalerii         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:22:52 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ typedef struct s_data	t_data;
 typedef struct s_node
 {
 	int					index;
-	int					num;
+	long				num;
 	int					steps;
-	int					dist;
+	long				dist;
 	int					p_found;
 	int					s;
 	struct s_node		*pair;
@@ -88,6 +88,15 @@ int						error(t_data *_);
 int						ex(t_data *_);
 void					free_str(t_data *_);
 
+void	sort_3(t_data *_);
+void pr(t_node *s);
+void rpr(t_node *s);
+void prt(t_data *_);
+void pr_single(t_node *s);
+void pr_by_ind(t_node *s, int i);
+
 # define MIN -2147483648
 # define MAX 2147483647
+# define MAXDIST 4294967295
+
 #endif
