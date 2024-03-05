@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost_calc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:48 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/26 14:24:20 by v                ###   ########.fr       */
+/*   Updated: 2024/03/04 19:50:11 by bvalerii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	steps_calc(t_data *_, t_node *s, int s_size, int bg_size)
 t_node	*cost_calc(t_node *s, t_node *bg, int s_size, int bg_size)
 {
 	t_node	*best_s;
-	long		min;
+	long	min;
 	int		i;
 
 	i = 1;

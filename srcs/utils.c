@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:49:07 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/27 19:15:27 by v                ###   ########.fr       */
+/*   Updated: 2024/03/04 19:51:21 by bvalerii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	ft_atol(char *nptr, t_data *_, int l)
 int	find_maxi(t_node *s, int size)
 {
 	long	max;
-	int	i;
-	int	maxi;
+	int		i;
+	int		maxi;
 
 	i = 1;
 	max = MIN;

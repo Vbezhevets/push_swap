@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:47:24 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/26 17:04:33 by v                ###   ########.fr       */
+/*   Updated: 2024/03/04 19:51:04 by bvalerii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_node					*find_max(t_node *s, int size);
 void					pair_max(t_node *s, t_node *bg, int size);
 void					pair(t_node *s, t_node *bg, int size, int i);
 int						steps_s(t_node *s, int size, t_data *_);
+void					sort_3(t_data *_);
 
 t_node					*cost_calc(t_node *s, t_node *bg, int s_size,
 							int bg_size);
@@ -87,13 +88,6 @@ void					free_list(t_node *s);
 int						error(t_data *_);
 int						ex(t_data *_);
 void					free_str(t_data *_);
-
-void	sort_3(t_data *_);
-void pr(t_node *s);
-void rpr(t_node *s);
-void prt(t_data *_);
-void pr_single(t_node *s);
-void pr_by_ind(t_node *s, int i);
 
 # define MIN -2147483648
 # define MAX 2147483647

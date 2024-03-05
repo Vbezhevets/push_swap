@@ -22,7 +22,6 @@ SRCS  = \
 			${SRCSDIR}/utils.c \
 			${SRCSDIR}/small_utils.c \
 			${SRCSDIR}/pair.c \
-			${SRCSDIR}/tests.c
 
 OBJSDIR     = ${SRCSDIR}/objs
 OBJS        = $(SRCS:${SRCSDIR}/%.c=${OBJSDIR}/%.o)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pair.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:35:36 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/02/26 13:42:55 by v                ###   ########.fr       */
+/*   Updated: 2024/03/04 19:49:31 by bvalerii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	pair_max(t_node *s, t_node *bg, int size)
 {
 	long	max;
-	int	i;
+	int		i;
 
 	i = 1;
 	max = MIN;
@@ -34,7 +34,7 @@ void	pair_max(t_node *s, t_node *bg, int size)
 void	pair_min(t_node *s, t_node *bg, int size)
 {
 	long	min;
-	int	i;
+	int		i;
 
 	i = 1;
 	min = MAX;
@@ -78,7 +78,7 @@ void	pair(t_node *s, t_node *bg, int size, int i)
 	bg_start = bg;
 	s->p_found = 0;
 	while (++i <= size)
-	{	
+	{
 		if ((s->num > bg->num && s->s == 1) || (s->num < bg->num && s->s == 2))
 		{
 			if (s->s == 1)

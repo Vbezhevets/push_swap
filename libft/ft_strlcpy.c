@@ -6,15 +6,15 @@
 /*   By: bvalerii <bvalerii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:16:38 by bvalerii          #+#    #+#             */
-/*   Updated: 2024/01/27 21:33:13 by bvalerii         ###   ########.fr       */
+/*   Updated: 2024/03/04 20:13:18 by bvalerii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strlcpy(char *dst, char *src, size_t n)
+int	ft_strlcpy(char *dst, char *src, size_t n)
 {
-	int src_size;
+	int		src_size;
 
 	src_size = ft_strlen(src);
 	if (n == 0)
